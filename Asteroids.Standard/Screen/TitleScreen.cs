@@ -100,7 +100,7 @@ namespace Asteroids.Standard.Screen
             foreach (var asteroid in _cache.Asteroids)
             {
                 asteroid.ScreenObject.Move();
-                _canvas.LoadPolygon(asteroid.PolygonPoints, ColorHexStrings.WhiteHex);
+                _canvas.LoadPolygon(asteroid.PolygonPoints, ColorHexStrings.DarkOrangeHex);
             }
         }
     }

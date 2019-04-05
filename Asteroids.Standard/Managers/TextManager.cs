@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using Asteroids.Standard.Screen;
 
@@ -287,6 +288,11 @@ namespace Asteroids.Standard.Managers
                     _screenCanvas.AddLineTo(new Point(rightSide, bottomSide));
                     break;
             }
+        }
+
+        internal void DrawText(string title, Justify cENTER, string v1, int v2, int letterSize, int v3)
+        {
+            throw new NotImplementedException();
         }
     }
 }

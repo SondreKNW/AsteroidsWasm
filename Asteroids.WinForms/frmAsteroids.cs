@@ -18,6 +18,7 @@ namespace Asteroids.WinForms
 
         private readonly IGameController _controller;
         private readonly IDictionary<ActionSound, SoundPlayer> _soundPlayers;
+        private ColorDialog colorDialog1;
         private SoundPlayer _soundPlaying;
 
         public FrmAsteroids()
@@ -191,6 +192,8 @@ namespace Asteroids.WinForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAsteroids));
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this._frame1 = new Asteroids.WinForms.Classes.GraphicPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this._frame1)).BeginInit();
             this.SuspendLayout();
@@ -199,9 +202,11 @@ namespace Asteroids.WinForms
             // 
             this._frame1.BackColor = System.Drawing.SystemColors.WindowText;
             this._frame1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._frame1.Image = ((System.Drawing.Image)(resources.GetObject("_frame1.Image")));
             this._frame1.Location = new System.Drawing.Point(0, 0);
             this._frame1.Name = "_frame1";
             this._frame1.Size = new System.Drawing.Size(788, 611);
+            this._frame1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._frame1.TabIndex = 2;
             this._frame1.TabStop = false;
             // 

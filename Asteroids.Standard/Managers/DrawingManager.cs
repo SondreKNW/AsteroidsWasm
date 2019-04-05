@@ -33,7 +33,7 @@ namespace Asteroids.Standard.Managers
 
         private void DrawPolygon(IList<Point> points)
         {
-            DrawPolygon(points, ColorHexStrings.DarkOrangeHex);
+            DrawPolygon(points, ColorHexStrings.WhiteHex);
         }
 
         private void DrawPolygon(IList<Point> points, string colorHex)
@@ -70,7 +70,7 @@ namespace Asteroids.Standard.Managers
             if (!_cache.Ship.IsAlive)
                 return;
 
-            DrawPolygon(_cache.ShipPoints);
+            DrawPolygon(_cache.ShipPoints, "#b8b894");
 
             //Draw flame if thrust is on
             if (_cache.Ship.IsThrustOn)
@@ -110,13 +110,13 @@ namespace Asteroids.Standard.Managers
                 return;
 
             //Draw the saucer
-            DrawPolygon(_cache.SaucerPoints);
+            DrawPolygon(_cache.SaucerPoints, "#33ff33");
 
             //Draw its missile
             if (_cache.MissilePoints?.Any() != true)
                 return;
 
-            DrawPolygon(_cache.MissilePoints);
+            DrawPolygon(_cache.MissilePoints, "#FF0000");
 
             //Draw flame for the missile
             var thrustPoints = new List<Point>
@@ -162,7 +162,7 @@ namespace Asteroids.Standard.Managers
                  .Where(a => a.ScreenObject.Size != Asteroid.ASTEROID_SIZE.DNE);
 
             foreach (var asteroid in asteroids)
-                DrawPolygon(asteroid.PolygonPoints);
+                DrawPolygon(asteroid.PolygonPoints, "#e68a00");
         }
 
         /// <summary>
