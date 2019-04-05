@@ -195,20 +195,20 @@ namespace Asteroids.WinForms
             ((System.ComponentModel.ISupportInitialize)(this._frame1)).BeginInit();
             this.SuspendLayout();
             // 
-            // frame1
+            // _frame1
             // 
             this._frame1.BackColor = System.Drawing.SystemColors.WindowText;
             this._frame1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._frame1.Location = new System.Drawing.Point(0, 0);
             this._frame1.Name = "_frame1";
-            this._frame1.Size = new System.Drawing.Size(634, 461);
+            this._frame1.Size = new System.Drawing.Size(788, 611);
             this._frame1.TabIndex = 2;
             this._frame1.TabStop = false;
             // 
-            // frmAsteroids
+            // FrmAsteroids
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(8, 19);
-            this.ClientSize = new System.Drawing.Size(634, 461);
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(788, 611);
             this.Controls.Add(this._frame1);
             this.Name = "FrmAsteroids";
             this.Text = "Asteroids";

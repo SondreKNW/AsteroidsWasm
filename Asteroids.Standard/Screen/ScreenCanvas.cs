@@ -110,7 +110,7 @@ namespace Asteroids.Standard.Screen
         /// </summary>
         public void AddLine(Point ptStart, Point ptEnd)
         {
-            AddLine(ptStart, ptEnd, ColorHexStrings.WhiteHex);
+            AddLine(ptStart, ptEnd, ColorHexStrings.MediumSeagreenHex);
         }
 
         /// <summary>

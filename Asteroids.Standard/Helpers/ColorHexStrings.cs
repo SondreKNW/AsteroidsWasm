@@ -9,6 +9,9 @@ namespace Asteroids.Standard.Helpers
         public static string OrangeHex = Color.Orange.ToHexString();
         public static string WhiteHex = Color.White.ToHexString();
         public static string TransparentHex = Color.White.ToHexString();
+        public static string DarkOrangeHex = Color.DarkOrange.ToHexString();
+        public static string MediumSeagreenHex = Color.MediumSeaGreen.ToHexString();
+    
 
         /// <summary>
         /// Converts a <see cref="Color"/> to an html-formatted text string (e.g. #RRGGBB).

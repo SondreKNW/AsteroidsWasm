@@ -33,7 +33,7 @@ namespace Asteroids.Standard.Managers
 
         private void DrawPolygon(IList<Point> points)
         {
-            DrawPolygon(points, ColorHexStrings.WhiteHex);
+            DrawPolygon(points, ColorHexStrings.DarkOrangeHex);
         }
 
         private void DrawPolygon(IList<Point> points, string colorHex)
