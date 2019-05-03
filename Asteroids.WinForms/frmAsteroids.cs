@@ -34,9 +34,14 @@ namespace Asteroids.WinForms
                     kvp => kvp.Key
                     , kvp => new SoundPlayer(kvp.Value)
                 );
-
+       
             foreach (var player in _soundPlayers)
                 player.Value.Load();
+
+                WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+
+                wplayer.URL = @"C:\Brukere\sonwa181001\Nedlastninger\MP3Astroids.mp3";
+                wplayer.controls.play();
         }
 
         private void OnSoundPlayed(object sender, ActionSound sound)
@@ -87,6 +92,15 @@ namespace Asteroids.WinForms
 
                     key = PlayKey.Escape;
                     break;
+
+                case Keys.O:
+                    if (_controller.GameStatus == GameMode.Title)
+                    {
+                        
+                    }
+                    
+                    key = PlayKey.O;
+                    break; 
 
                 case Keys.Left:
                     key = PlayKey.Left;
@@ -150,6 +164,10 @@ namespace Asteroids.WinForms
 
                 case Keys.P:
                     key = PlayKey.P;
+                    break;
+
+                case Keys.O:
+                    key = PlayKey.O;
                     break;
 
                 default:

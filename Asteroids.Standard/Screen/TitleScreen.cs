@@ -14,6 +14,10 @@ namespace Asteroids.Standard.Screen
         private const int instructionSize = 200;
         private const int instructionOffset = instructionSize * 5;
 
+        private const string instructions2 = "PRESS O TO ENTER OPTIONS";
+        private const int instructionSize2 = 200;
+        private const int instructionOffset2 = instructionSize * 7;
+
         private const int titleSize = 200;
         private const int titleOffset1 = ScreenCanvas.CANVAS_HEIGHT - titleSize * 4;
         private const int titleOffset2 = ScreenCanvas.CANVAS_HEIGHT - titleSize * 2;
@@ -63,12 +67,20 @@ namespace Asteroids.Standard.Screen
         /// </summary>
         public void DrawScreen()
         {
-            //Draw instructions
+            //Draw Play instructions
             _textManager.DrawText(
                 instructions
                 , TextManager.Justify.CENTER
                 , instructionOffset
                 , instructionSize, instructionSize
+            );
+
+            //Draw Options instructions
+            _textManager.DrawText(
+                instructions2
+                , TextManager.Justify.CENTER
+                , instructionOffset2
+                , instructionSize2, instructionSize2
             );
 
             // Flip back and forth between "Game Over" and "Asteroids"

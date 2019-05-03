@@ -7,6 +7,7 @@ using Asteroids.Standard.Interfaces;
 using Asteroids.Standard.Managers;
 using Asteroids.Standard.Screen;
 using Asteroids.Standard.Sounds;
+using System.Windows.Input;
 
 namespace Asteroids.Standard
 {
@@ -35,8 +36,7 @@ namespace Asteroids.Standard
             _textManager = new TextManager(_screenCanvas);
             _scoreManager = new ScoreManager(_textManager);
             _currentTitle = new TitleScreen(_textManager, _screenCanvas);
-            _currentTitle.InitTitleScreen();
-
+            
             SetFlipTimer();
         }
 
@@ -56,6 +56,8 @@ namespace Asteroids.Standard
         private Game _game;
         private ScoreManager _scoreManager;
         private ScreenCanvas _screenCanvas;
+        
+        
 
         private bool _leftPressed;
         private bool _rightPressed;
@@ -128,6 +130,16 @@ namespace Asteroids.Standard
                     GameStatus = GameMode.Title;
                 }
             }
+            // Check O key
+            if (key == PlayKey.O) // Options
+            {
+                // Pressing O during a title screen opens Options
+                if (GameStatus == GameMode.Title)
+                {
+                    
+                    GameStatus = GameMode.Options;
+                }
+            }
             else // Not Escape
             {
                 // If we are in tht Title Screen, Start a game
@@ -178,6 +190,13 @@ namespace Asteroids.Standard
 
                 // Pause can't be held down)
                 else if (!_pauseLastPressed && key == PlayKey.P)
+                {
+                    _pauseLastPressed = true;
+                    _game.Pause();
+                }
+
+                // Options can't be held down)
+                else if (!_pauseLastPressed && key == PlayKey.O)
                 {
                     _pauseLastPressed = true;
                     _game.Pause();
@@ -240,7 +259,12 @@ namespace Asteroids.Standard
 
             return GameStatus == GameMode.Game;
         }
+        /*
+        public static bool IsKeyDown (System.Windows.Input.Key key)
+            {
 
+            }
+            */
         private async Task FlipDisplay()
         {
             // Draw the next screen
@@ -258,6 +282,19 @@ namespace Asteroids.Standard
                         _currentTitle.InitTitleScreen();
                     }
                     break;
+                case GameMode.Options:
+                if(GameStatus == GameMode.Title) 
+                    {
+
+                    }
+                    
+                // Escape in Options goes back to Title Screen
+                if ()
+                {
+                    _currentTitle = new TitleScreen(_textManager, _screenCanvas);
+                    GameStatus = GameMode.Title;
+                }
+                 break;   
             }
 
             // Flip the screen to show the updated image

@@ -3,6 +3,7 @@
     public enum GameMode {
         Prep,
         Title,
+        Options,
         Game,
         Exit
     };

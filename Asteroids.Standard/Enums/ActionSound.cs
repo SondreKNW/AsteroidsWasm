@@ -8,6 +8,6 @@
         Explode1,
         Explode2,
         Explode3,
-        Saucer,
+        Saucer, 
     }
 }
