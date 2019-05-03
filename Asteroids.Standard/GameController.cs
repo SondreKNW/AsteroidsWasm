@@ -140,6 +140,15 @@ namespace Asteroids.Standard
                     GameStatus = GameMode.Options;
                 }
             }
+
+            // Escape in Options goes back to Title Screen
+            if (key == PlayKey.Escape)
+            {
+                _currentTitle = new TitleScreen(_textManager, _screenCanvas);
+                GameStatus = GameMode.Title;
+            }
+             
+
             else // Not Escape
             {
                 // If we are in tht Title Screen, Start a game
@@ -194,14 +203,6 @@ namespace Asteroids.Standard
                     _pauseLastPressed = true;
                     _game.Pause();
                 }
-
-                // Options can't be held down)
-                else if (!_pauseLastPressed && key == PlayKey.O)
-                {
-                    _pauseLastPressed = true;
-                    _game.Pause();
-                }
-
             }
         }
 
@@ -287,14 +288,7 @@ namespace Asteroids.Standard
                     {
 
                     }
-                    
-                // Escape in Options goes back to Title Screen
-                if ()
-                {
-                    _currentTitle = new TitleScreen(_textManager, _screenCanvas);
-                    GameStatus = GameMode.Title;
-                }
-                 break;   
+                break;
             }
 
             // Flip the screen to show the updated image
