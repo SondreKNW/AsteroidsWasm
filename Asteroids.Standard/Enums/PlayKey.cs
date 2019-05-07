@@ -8,6 +8,7 @@
         Down,
         Space,
         P,
-        O
+        O,
+        C
     }
 }

@@ -36,7 +36,7 @@ namespace Asteroids.Standard
             _textManager = new TextManager(_screenCanvas);
             _scoreManager = new ScoreManager(_textManager);
             _currentTitle = new TitleScreen(_textManager, _screenCanvas);
-            
+            _options = new Options(_textManager, _screenCanvas);
             SetFlipTimer();
         }
 
@@ -56,6 +56,7 @@ namespace Asteroids.Standard
         private Game _game;
         private ScoreManager _scoreManager;
         private ScreenCanvas _screenCanvas;
+        private Options _options;
         
         
 
@@ -65,6 +66,7 @@ namespace Asteroids.Standard
         private bool _hyperspaceLastPressed;
         private bool _shootingLastPressed;
         private bool _pauseLastPressed;
+        private bool _colorChangeLastPressed;
 
         private Timer _timerFlip;
 
@@ -136,8 +138,17 @@ namespace Asteroids.Standard
                 // Pressing O during a title screen opens Options
                 if (GameStatus == GameMode.Title)
                 {
-                    
                     GameStatus = GameMode.Options;
+                }
+            }
+
+            // Check C key
+            if (key == PlayKey.C) // ShipColorChange
+            {
+                // Pressing C in Options will change color
+                if (GameStatus == GameMode.Options)
+                {
+                    _options.shipColorChange();
                 }
             }
 
@@ -197,6 +208,13 @@ namespace Asteroids.Standard
                     _game.Shoot();
                 }
 
+                // Color can't be held down)
+                else if (!_colorChangeLastPressed && key == PlayKey.C)
+                {
+                    _colorChangeLastPressed = true;
+                    _options.shipColorChange();
+                }
+
                 // Pause can't be held down)
                 else if (!_pauseLastPressed && key == PlayKey.P)
                 {
@@ -231,6 +249,11 @@ namespace Asteroids.Standard
             // Pause - require key up before key down
             else if (key == PlayKey.P)
                 _pauseLastPressed = false;
+
+            // Color change - require key up before key down
+            else if (key == PlayKey.C)
+                _colorChangeLastPressed = false;
+
         }
 
         #endregion
@@ -241,6 +264,11 @@ namespace Asteroids.Standard
         {
             _scoreManager.Draw();
             _currentTitle.DrawScreen();
+        }
+
+        private void OptionsScreen()
+        {
+            _options.DrawScreen();
         }
 
         private bool PlayGame()
@@ -260,12 +288,7 @@ namespace Asteroids.Standard
 
             return GameStatus == GameMode.Game;
         }
-        /*
-        public static bool IsKeyDown (System.Windows.Input.Key key)
-            {
 
-            }
-            */
         private async Task FlipDisplay()
         {
             // Draw the next screen
@@ -284,9 +307,9 @@ namespace Asteroids.Standard
                     }
                     break;
                 case GameMode.Options:
-                if(GameStatus == GameMode.Title) 
-                    {
-
+                if(GameStatus == GameMode.Options) 
+                    {           
+                        OptionsScreen();
                     }
                 break;
             }

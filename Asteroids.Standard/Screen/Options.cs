@@ -1,17 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Asteroids.Standard.Components;
 using Asteroids.Standard.Helpers;
 using Asteroids.Standard.Managers;
-
 
 namespace Asteroids.Standard.Screen
 {
     public class Options
     {
-        private const string instructions = "OPTIONS";
-        private const int instructionSize = 500;
-        private const int instructionOffset = instructionSize * 3;
+        // What does Options need?
+        // Mixing Volume
+        // Change of Key binds
+        // Change of Colors
+        // Change of Background?
+
+        private const string Title = "OPTIONS";
+        private const int titleSize = 500;
+        private const int titleOffset = titleSize * 3;
+
+        private const string Color = "PRESS C TO CHANGE COLOR OF SPACESHIP";
+        private const int colorSize = 250;
+        private const int colorOffset = escapeSize * 3;
+
+        private const string Background = "PRESS B TO CHANGE BACKGROUND";
+        private const int backgroundSize = 250;
+        private const int backgroundOffset = escapeSize * 3;
+
+        private const string Escape = "PRESS ESC TO RETURN TO MAIN MENU";
+        private const int escapeSize = 200;
+        private const int escapeOffset = escapeSize * 3;
+
+        private const string Test = "TEST";
+        private const int testSize = 200;
+        private const int testOffset = escapeSize * 3;
 
         private string _title;
         private int _letterSize;
@@ -25,8 +45,6 @@ namespace Asteroids.Standard.Screen
         {
             _textManager = textManager;
             _canvas = canvas;
-
-           
 
             _cache = new CacheManager(
                 new ScoreManager(new TextManager(_canvas))
@@ -43,16 +61,58 @@ namespace Asteroids.Standard.Screen
             _title = "OPTIONS";
         }
 
-        public void DrawOptions()
+        public void DrawScreen()
         {
-            //Draw Options Title
+            // Draw Options Title
             _textManager.DrawText(
-                instructions
+                Title
                 , TextManager.Justify.CENTER
-                , instructionOffset
-                , instructionSize, instructionSize
+                , 1000
+                , titleSize, titleSize
+            );
+
+             // Draw Color option instructions
+            _textManager.DrawText(
+                Color
+                , TextManager.Justify.CENTER
+                , 2500
+                , colorSize, colorSize
+            );
+
+              // Draw Background option instructions
+            _textManager.DrawText(
+                Background
+                , TextManager.Justify.CENTER
+                , 3500
+                , backgroundSize, backgroundSize
+            );
+
+            // Draw Escape instructions
+            _textManager.DrawText(
+                Escape
+                , TextManager.Justify.CENTER
+                , 6500
+                , escapeSize, escapeSize
+               );
+
+            // Draw Astroid belt
+            _cache.Repopulate();
+            foreach (var asteroid in _cache.Asteroids)
+            {
+                asteroid.ScreenObject.Move();
+                _canvas.LoadPolygon(asteroid.PolygonPoints, ColorHexStrings.DarkOrangeHex);
+            }
+        }
+        public void shipColorChange()
+        {
+            // Draw TEST
+            _textManager.DrawText(
+                Test
+                , TextManager.Justify.CENTER
+                , 5000
+                , testSize, testSize
             );
         }
-
+        
     }
 }

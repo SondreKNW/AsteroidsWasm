@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Asteroids.Standard",
+    "\\Asteroids.Standard\\Base",
+    "\\Asteroids.Standard\\Interfaces",
+    "\\Asteroids.Standard\\Managers",
+    "\\Asteroids.Standard\\Screen",
+    "\\Asteroids.Xamarin\\Asteroids.Xamarin.Android",
+    "\\Asteroids.Xamarin\\Asteroids.Xamarin.Android\\Resources",
+    "\\docs\\_framework",
+    "\\docs\\_framework\\asmjs"
+  ],
+  "SelectedNode": "\\Asteroids.Standard.sln",
+  "PreviewInSolutionExplorer": false
+}
